@@ -1,7 +1,8 @@
 from error_handling import AlreadyExists
 from read_write import read_data, write_data, create_unique
 
-FILE_NAME = 'books.json'
+FILE_NAME = "books.json"
+
 
 class Book:
     book_inventory = read_data(FILE_NAME)
@@ -14,14 +15,9 @@ class Book:
         isbn = create_unique(title, author, genre)
 
         if isbn in cls.book_inventory:
-            raise AlreadyExists
+            raise Exception("Book already exists!")
 
-        rslt = {
-            'title': title,
-            'author': author,
-            'genre': genre,
-            'quantity': quantity
-        }
+        rslt = {"title": title, "author": author, "genre": genre, "quantity": quantity}
 
         cls.book_inventory[isbn] = rslt
 
