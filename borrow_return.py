@@ -39,12 +39,13 @@ def update_file(isbn, member_id, borrow=False):
                     print("Cannot take same book")
                     return 0
                 else:
-                    due = datetime.strptime(x[isbn]["due"], "%y%m%d")
-
-                    if due > date.today():
+                    due = datetime.date(datetime.strptime(x[isbn]["due"], "%Y-%m-%d"))
+                    print(due)
+                    extra_days = (date.today() - due).days
+                    print(type(extra_days))
+                    if extra_days < 0:
                         print("No Fine")
                     else:
-                        extra_days = (date.today() - x["due"]).days
                         fine = extra_days * 10
                         print(f"Please pay a fine of {fine}")
 
