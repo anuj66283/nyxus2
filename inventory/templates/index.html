@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+
+    <style>
+        table, th, td {
+  border: 1px solid black;
+}
+    </style>
+</head>
+<body>
+    <div>Authors</div>
+    <div id="author">
+        {% block author %} {% endblock %}
+    </div>
+
+    <div>Books</div>
+
+    <div id="books">
+        {% block book %} {% endblock %}
+    </div>
+
+</body>
+</html>
