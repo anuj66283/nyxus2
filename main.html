@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+
+{% block author %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>bio</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+            {% for x in au %}
+                <tr>
+                    <td>{{x.name}}</td>
+                    <td>{{x.bio}}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}
+
+{% block book %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>author</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+            {% for x in bk %}
+                <tr>
+                    <td>{{x.title}}</td>
+                    <td>{{x.author.name}}</td>
+                    <td>{{x.published_date}}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>Post list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>author</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+            {% for x in blogs %}
+                <tr>
+                    <td><a href="/blog/{{x.id}}">{{x.id}}</a></td>
+                    <td>{{x.title}}</td>
+                    <td>{{x.author}}</td>
+                    <td>{{x.published_date}}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}

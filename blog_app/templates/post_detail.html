@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>Post list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>author</th>
+                <th>content</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+                <tr>
+                    <td>{{blog.title}}</td>
+                    <td>{{blog.author}}</td>
+                    <td>{{blog.content}}</td>
+                    <td>{{blog.published_date}}</td>
+                </tr>
+        
+        </tbody>
+
+    </table>
+
+    <div>
+        <h2>Comments</h2>
+
+        {% for x in blog.cmnts.all %}
+            <p>{{x.content}}</p>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
