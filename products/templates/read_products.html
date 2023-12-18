@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    {% for x in products %}
+
+    <div class="products">
+        <a href="/product/{{x.id}}"><img src="{{ x.image.url }}" alt="sorry"/></a>
+        <p>{{ x.name }}</p>
+        <p>{{x.price}}</p>
+        <p>{{x.id}}</p>
+    </div>
+
+    {% endfor %}
+
+{% endblock %} 

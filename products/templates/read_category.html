@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    {% for x in category %}
+
+    <div class="category">
+        <p>{{ x.name }}</p>
+        <p>{{ x.id }}</p>
+    </div>
+
+    {% endfor %}
+
+{% endblock %} 

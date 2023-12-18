@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+    <div class="products">
+        <a href="/product/{{product.id}}"><img src="/media/{{ product.image }}" alt="sorry"/></a>
+        <p>{{ product.name }}</p>
+        <p>{{product.price}}</p>
+    </div>
+
+{% endblock %}

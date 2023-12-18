@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>click delet to delete {{product.name}}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+
+    </form>
+
+{% endblock %}
