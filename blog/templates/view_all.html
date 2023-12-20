@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <div>
+        {% if status %}
+            <a href="accounts/logout">logout</a>
+        
+        {% else %}
+        <a href="accounts/login">login</a>
+        {% endif %}
+    </div>
+
+    {% for blog in blogs %}
+        <div>
+            <a href="/blog/{{blog.id}}"><h3>{{blog.title}}</h3></a>
+        </div>
+    {% endfor %}
+    
+
+{% endblock %}
