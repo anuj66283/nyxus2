@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Enter otp below</p>
+        <input type="text" name="otp" id = otp>
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}
