@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Books</h1>
+
+        <div class="list-group">
+            {% for book in books %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ book.title }}</h5>
+                        <small>${{ book.price }}</small>
+                    </div>
+                    <p class="mb-1">{{ book.author }} - {{ book.genre }}</p>
+                    <a href="#" data-toggle="collapse" data-target="#collapseDesc{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseDesc{{ forloop.counter }}">Show Description</a>
+                    <div class="collapse" id="collapseDesc{{ forloop.counter }}">
+                        <p>{{ book.desc }}</p>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        <form method="POST" action="{% url 'cart' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="title" value="{{book.title}}">
+                            <input type="hidden" name="author" value="{{book.author}}">
+                            <button class="btn btn-primary" type="submit" onclick="">Add to Cart</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
