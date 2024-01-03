@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Shared Wishlist</h1>
+
+        {% if wishlist %}
+            <div class="list-group">
+                {% for item in wishlist %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <a href="/book/{{ item.book.id }}"><h5 class="mb-1">{{ item.book.title }}</h5></a>
+                            <small>Rs{{ item.book.price }}</small>
+                        </div>
+                        <p class="mb-1">{{ item.book.author }} - {{ item.book.genre }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>The wishlist is empty.</p>
+        {% endif %}
+    </div>
+{% endblock %}
