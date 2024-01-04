@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h1>{{book.title}}</h1>
+
+<iframe src="/media/{{ book.uri }}" width="100%" height="100%" type="application/pdf"></iframe>
+
+{% endblock %}

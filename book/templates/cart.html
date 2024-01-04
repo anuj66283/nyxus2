@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Your Cart</h1>
+
+    {% if cart %}
+    <div class="list-group">
+        {% for x in cart %}
+        <div class="list-group-item mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="title-section">
+                    <h5>{{ x.book.title }}</h5>
+                    <p class="text-muted">{{ x.book.author }} - {{ x.book.genre }}</p>
+                </div>
+                <div class="quantity-section d-flex align-items-center">
+                    <form method="POST" class="quantity-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="title" value="{{ x.book.title }}">
+                        <input type="hidden" name="author" value="{{ x.book.author }}">
+                        <input type="hidden" name="sign" value="-">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm quantity-btn">-</button>
+                    </form>
+                    <span class="quantity mx-2">{{ x.quantity }}</span>
+                    <form method="POST" class="quantity-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="title" value="{{ x.book.title }}">
+                        <input type="hidden" name="author" value="{{ x.book.author }}">
+                        <input type="hidden" name="sign" value="+">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm quantity-btn">+</button>
+                    </form>
+                </div>
+                <div class="price-section">
+                    <p class="mb-0">Rs{{ x.book.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total</h5>
+                <p class="card-text h4 font-weight-bold text-primary">Subtotal: Rs{{ total }}</p>
+                <a href="/checkout" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+    <p>{{disc}}</p>
+
+    {% else %}
+    <p class="text-muted">Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

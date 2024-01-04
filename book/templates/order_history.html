@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1>Checkout History</h1>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Book Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Date of Purchase</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for chkout in checkout %}
+            <tr>
+              <td>{{ chkout.book.title }}</td>
+              <td>{{ chkout.book.author }}</td>
+              <td>{{ chkout.date }}</td>
+              <td>Rs {{ chkout.book.price }}</td>
+              <td>{{chkout.quantity}}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="font-weight-bold">Total: Rs {{total}}</p>
+  </div>
+{% endblock %}
